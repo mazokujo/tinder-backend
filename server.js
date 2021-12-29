@@ -1,3 +1,6 @@
+if (process.env.NODE_ENV !== "production") {
+    require('dotenv').config();
+}
 import express from 'express';
 import mongoose from 'mongoose'
 import Card from './dbCards.js'
@@ -5,7 +8,7 @@ import Cors from 'cors'
 //App config
 const app = express();
 const port = process.env.PORT || 8001
-const connection_url = 'mongodb+srv://admin:C6EyrvKnelbJp0gO@cluster0.38jmq.mongodb.net/tinderdb?retryWrites=true&w=majority'
+const connection_url = process.env.DB_URL
 //Middleware 
 app.use(express.json())
 app.use(Cors())
